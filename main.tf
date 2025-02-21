@@ -18,3 +18,14 @@ resource "azurerm_resource_group" "labrg2" {
     name = "lab-cloudukw-rg"
     
 }
+
+resource "azurerm_public_ip" "labpip" {
+  name                = "cloud-lab-pip"
+  resource_group_name = azurerm_resource_group.labrg2.name
+  location            = azurerm_resource_group.labrg2.location
+  allocation_method   = "Static"
+
+  tags = {
+    environment = "Production"
+  }
+}
